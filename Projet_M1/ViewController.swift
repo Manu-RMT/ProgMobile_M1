@@ -45,7 +45,7 @@ class ViewController: UIViewController {
             return
         }
         
-        nb_essaie -= 1
+        nb_essaie -= 1 // on met le compteur à 10 et on enlève 1 à chaque fois
         // on met la combinaison dans un tableau
         var combinaison = String(random_combinaison).compactMap{ $0.wholeNumberValue }
         var combinaison_sasie = String(val).compactMap{ $0.wholeNumberValue }
@@ -56,14 +56,15 @@ class ViewController: UIViewController {
         var mal_place : Int!  = 0
         var faux : Int! = 0
         
-        // Vérification les nombres identiques
         for i in 0...3 {
+            // Vérification les nombres identiques
             if combinaison[i] == comb_secret_copie[i] {
                 bien_place += 1
                 comb_secret_copie[i] = -1 // on change la valeur des OK
                 combinaison[i] = -2
             }
             
+            // Vérification des chiffres mal placé
             var n : Int = 0
             for j in combinaison {
                 if j == comb_secret_copie[i]{
@@ -82,13 +83,7 @@ class ViewController: UIViewController {
 
         affichage_resultat.text = resultat + "\r" + affichage_resultat.text
        
-        
-        
-        
-        
-        
-        
-        
+        nombreSasie.text = nil
         
     }
     
