@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Projet_M1
 //
-//  Created by Manu on 05/04/2023.
+//  Created by Manu RAMANITRA on 05/04/2023.
 //
 
 import UIKit
@@ -17,8 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var affichage_resultat: UITextView!
     @IBOutlet weak var messageBot: UILabel!
     @IBOutlet weak var nombreSasie: UITextField!
+    @IBOutlet weak var libelleNbSaisie: UILabel!
+    @IBOutlet weak var button_reload_game: UIButton!
+    
     // nombre aléatoire
-    let random_combinaison : Int = Int.random(in: 1000...9999)
+    var random_combinaison : Int = Int.random(in: 1000...9999)
     var nb_essaie : Int = 11
    
     
@@ -47,9 +50,10 @@ class ViewController: UIViewController {
         
         nb_essaie -= 1 // on met le compteur à 10 et on enlève 1 à chaque fois
         // on met la combinaison dans un tableau
-        var combinaison = String(random_combinaison).compactMap{ $0.wholeNumberValue }
-        var combinaison_sasie = String(val).compactMap{ $0.wholeNumberValue }
-        var comb_secret_copie = combinaison_sasie
+        let combinaison = String(random_combinaison).compactMap{ $0.wholeNumberValue }
+        let combinaison_sasie = String(val).compactMap{ $0.wholeNumberValue }
+        var comb_saisie_copie = combinaison_sasie
+        var comb_secret_copie = combinaison
         
         // type de chiffre
         var bien_place : Int! = 0
@@ -58,19 +62,19 @@ class ViewController: UIViewController {
         
         for i in 0...3 {
             // Vérification les nombres identiques
-            if combinaison[i] == comb_secret_copie[i] {
+            if comb_secret_copie[i] == comb_saisie_copie[i] {
                 bien_place += 1
-                comb_secret_copie[i] = -1 // on change la valeur des OK
-                combinaison[i] = -2
+                comb_saisie_copie[i] = -1 // on change la valeur des OK
+                comb_secret_copie[i] = -2
             }
             
             // Vérification des chiffres mal placé
             var n : Int = 0
-            for j in combinaison {
-                if j == comb_secret_copie[i]{
+            for j in comb_secret_copie {
+                if j == comb_saisie_copie[i]{
                     mal_place += 1
-                    comb_secret_copie[i] = -1
-                    combinaison[n] = -2
+                    comb_saisie_copie[i] = -1
+                    comb_secret_copie[n] = -2
                 }
                 n += 1
             }
@@ -78,13 +82,26 @@ class ViewController: UIViewController {
         
         faux = 4 - (bien_place + mal_place)
         
-        
         let resultat = "\(nb_essaie) _  \(combinaison_sasie[0]) | \(combinaison_sasie[1]) | \(combinaison_sasie[2]) | \(combinaison_sasie[3]) -- OK : \(bien_place!) - Mal placé : \(mal_place!) - Faux : \(faux!)"
 
         affichage_resultat.text = resultat + "\r" + affichage_resultat.text
        
+        // Dans le cas ou il  a trouvé la combinaision
+        if bien_place == 4 && nb_essaie > 1 {
+            messageBot.text = "Bravo la combinaision était bien : \(random_combinaison)"
+            desactivate_game()
+            
+        }
+        
+        print(combinaison)
         nombreSasie.text = nil
         
+    }
+    
+    // relance une nouvelle partie
+    @IBAction func reload_game(_ sender: Any) {
+        messageBot.text = "Bonjour les MasterMinder"
+        activate_game()
     }
     
     
@@ -101,7 +118,23 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // desactive les elements de la partie
+    func desactivate_game(){
+        nombreSasie.isHidden = true
+        libelleNbSaisie.isHidden = true
+        affichage_resultat.isHidden = true
+        button_reload_game.isHidden = false
+    }
     
+    // active les éléments de la partie
+    func activate_game(){
+        nombreSasie.isHidden = false
+        libelleNbSaisie.isHidden = false
+        affichage_resultat.isHidden = false
+        button_reload_game.isHidden = true
+        affichage_resultat.text = nil
+        random_combinaison = Int.random(in: 1000...9999)
+    }
     
 
 }
