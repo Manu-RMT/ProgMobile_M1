@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var nombreSasie: UITextField!
     @IBOutlet weak var libelleNbSaisie: UILabel!
     @IBOutlet weak var button_reload_game: UIButton!
+    @IBOutlet weak var img_win: UIImageView!
+    @IBOutlet weak var img_loose: UIImageView!
+    
     
     // nombre aléatoire
     var random_combinaison : Int = Int.random(in: 1000...9999)
@@ -84,12 +87,19 @@ class ViewController: UIViewController {
         
         let resultat = "\(nb_essaie) _  \(combinaison_sasie[0]) | \(combinaison_sasie[1]) | \(combinaison_sasie[2]) | \(combinaison_sasie[3]) -- OK : \(bien_place!) - Mal placé : \(mal_place!) - Faux : \(faux!)"
 
-        affichage_resultat.text = resultat + "\r" + affichage_resultat.text
-       
+        affichage_resultat.text = affichage_resultat.text + "\r" + resultat
+        libelleNbSaisie.text = "Il vous reste \(nb_essaie) tentative(s)"
+        
+        // Dans le cs ou il n'a pas trouvé la combinaison
+        if nb_essaie == 0 {
+            messageBot.text = "Vous avez utiliser toutes vos tentatives. La réponse était : \(random_combinaison)"
+            desactivate_game(win: false)
+        }
+        
         // Dans le cas ou il  a trouvé la combinaision
         if bien_place == 4 && nb_essaie > 1 {
             messageBot.text = "Bravo la combinaision était bien : \(random_combinaison)"
-            desactivate_game()
+            desactivate_game(win: true)
             
         }
         
@@ -119,7 +129,13 @@ class ViewController: UIViewController {
     }
     
     // desactive les elements de la partie
-    func desactivate_game(){
+    func desactivate_game(win : Bool){
+        if win == true {
+            print("gagne")
+            img_win.isHidden = false
+        }else {
+            img_loose.isHidden = false
+        }
         nombreSasie.isHidden = true
         libelleNbSaisie.isHidden = true
         affichage_resultat.isHidden = true
@@ -132,10 +148,12 @@ class ViewController: UIViewController {
         libelleNbSaisie.isHidden = false
         affichage_resultat.isHidden = false
         button_reload_game.isHidden = true
+        img_win.isHidden = true
+        img_loose.isHidden = true
         affichage_resultat.text = nil
+        libelleNbSaisie.text = "Je tente"
+        nb_essaie = 11
         random_combinaison = Int.random(in: 1000...9999)
     }
-    
-
 }
 
