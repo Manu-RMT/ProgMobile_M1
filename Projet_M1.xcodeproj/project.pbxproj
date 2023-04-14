@@ -13,6 +13,8 @@
 		320645D129DD5D0200D17098 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320645CF29DD5D0200D17098 /* Main.storyboard */; };
 		320645D329DD5D0300D17098 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 320645D229DD5D0300D17098 /* Assets.xcassets */; };
 		320645D629DD5D0300D17098 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320645D429DD5D0300D17098 /* LaunchScreen.storyboard */; };
+		32A6051229E9494A0080244B /* MasterMindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051129E9494A0080244B /* MasterMindViewController.swift */; };
+		32A6051429E95C070080244B /* PadelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051329E95C070080244B /* PadelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		320645D229DD5D0300D17098 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		320645D529DD5D0300D17098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		320645D729DD5D0300D17098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32A6051129E9494A0080244B /* MasterMindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMindViewController.swift; sourceTree = "<group>"; };
+		32A6051329E95C070080244B /* PadelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				320645D229DD5D0300D17098 /* Assets.xcassets */,
 				320645D429DD5D0300D17098 /* LaunchScreen.storyboard */,
 				320645D729DD5D0300D17098 /* Info.plist */,
+				32A6051129E9494A0080244B /* MasterMindViewController.swift */,
+				32A6051329E95C070080244B /* PadelViewController.swift */,
 			);
 			path = Projet_M1;
 			sourceTree = "<group>";
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A6051229E9494A0080244B /* MasterMindViewController.swift in Sources */,
 				320645CE29DD5D0200D17098 /* ViewController.swift in Sources */,
 				320645CA29DD5D0200D17098 /* AppDelegate.swift in Sources */,
 				320645CC29DD5D0200D17098 /* SceneDelegate.swift in Sources */,
+				32A6051429E95C070080244B /* PadelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
