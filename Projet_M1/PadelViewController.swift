@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PadelViewController: UIViewController {
     var trajectoire = CGPoint(x: 0.5, y: 3) // trajectoire balle horizentale et verticale
@@ -13,11 +14,16 @@ class PadelViewController: UIViewController {
     var perdu : Bool = false
     var bas_ecran_enabled = true
     var score : [Int] = [0,0]
+    var joueur : String = ""
+    var tape_balle : AVAudioPlayer?
     
     @IBOutlet weak var balle: UIImageView!
     @IBOutlet weak var raquette_J1: UIImageView!
     @IBOutlet weak var raquette_J2: UIImageView!
     @IBOutlet weak var tableau_score: UILabel!
+    @IBOutlet weak var affichage_resultat_final: UILabel!
+    @IBOutlet weak var boutoRretourHome: UIButton!
+    @IBOutlet weak var boutonRetourJeu: UIButton!
     
    
     @objc func lancement_game(t: Timer) {
@@ -51,6 +57,7 @@ class PadelViewController: UIViewController {
                 if (pos_balle.x + size_balle.width > pos_raquette.x) && (pos_balle.x < pos_raquette.x + size_raquette.width) {
                     trajectoire.y = -trajectoire.y
                     bas_ecran_enabled = false // au tour de l'autre de jouer
+                    tape_balle!.play()
                 } else {
                     perdu = true // on a perdu la balle
                     score[0] += 1
@@ -64,6 +71,7 @@ class PadelViewController: UIViewController {
                 if (pos_balle.x + size_balle.width > pos_raquette2.x) && (pos_balle.x < pos_raquette2.x + size_raquette2.width) {
                     trajectoire.y = -trajectoire.y
                     bas_ecran_enabled = true
+                    tape_balle!.play()
                 } else {
                     perdu = true // on a perdu la balle
                     score[1] += 1
@@ -78,6 +86,29 @@ class PadelViewController: UIViewController {
             perdu = false
             balle.frame.origin = CGPoint(x: (size_screen.width / 2) , y: (size_screen.height / 2)) // on remet la balle au centre
         }
+        
+        
+        // gestion fin du jeu
+        if score[0] == 10 {
+            affichage_resultat_final.isHidden = false
+            boutonRetourJeu.isHidden = false
+            boutoRretourHome.isHidden = false
+            balle.isHidden = true
+            tableau_score.isHidden = true
+            joueur = "Victoire du joueur A : \(score[0]) - \(score[1])"
+            
+        }
+        if score[1] == 10 {
+            affichage_resultat_final.isHidden = false
+            boutonRetourJeu.isHidden = false
+            boutoRretourHome.isHidden = false
+            balle.isHidden = true
+            tableau_score.isHidden = true
+            joueur = "Victoire du joueur B : \(score[1]) - \(score[0])"
+            
+        }
+        
+        affichage_resultat_final.text = joueur
     }
     
     
@@ -118,8 +149,16 @@ class PadelViewController: UIViewController {
         // Do any additional setup after loading the view.
         timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(lancement_game), userInfo: nil, repeats: true)
         
-    }
+        let path = Bundle.main.path(forResource: "bruit_balle_tennis", ofType:"mp3")!
+        let url_balle = URL(fileURLWithPath: path)
+        
+        do {
+            tape_balle = try AVAudioPlayer(contentsOf: url_balle)
+        } catch{
+            print("Erreur lancement bruit")
+        }
     
+    }
 
     /*
     // MARK: - Navigation
