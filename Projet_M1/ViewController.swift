@@ -14,6 +14,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // retour vers la page d'accueil
+    @IBAction func PageAccueil(_ for : UIStoryboardSegue) {
+    }
+    
     @IBOutlet weak var affichage_resultat: UITextView!
     @IBOutlet weak var messageBot: UILabel!
     @IBOutlet weak var nombreSasie: UITextField!

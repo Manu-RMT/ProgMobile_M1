@@ -11,17 +11,25 @@ class PadelViewController: UIViewController {
     var trajectoire = CGPoint(x: 0.5, y: 3) // trajectoire balle horizentale et verticale
     var timer : Timer!
     var perdu : Bool = false
-
+    var bas_ecran_enabled = true
+    var score : [Int] = [0,0]
+    
     @IBOutlet weak var balle: UIImageView!
     @IBOutlet weak var raquette_J1: UIImageView!
+    @IBOutlet weak var raquette_J2: UIImageView!
+    @IBOutlet weak var tableau_score: UILabel!
     
-    
+   
     @objc func lancement_game(t: Timer) {
+        tableau_score.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+
         var pos_balle : CGPoint = balle.frame.origin                 // position balle
         let size_balle = balle.frame.size                           // taille de la balle
         let size_screen = self.view.frame.size                     // taille de l'ecran
         let pos_raquette : CGPoint  = raquette_J1.frame.origin     // position de la raquette
         let size_raquette = raquette_J1.frame.size                 // taille de la raquette
+        let pos_raquette2 : CGPoint  = raquette_J2.frame.origin     // position de la raquette 2
+        let size_raquette2 = raquette_J2.frame.size                 // taille de la raquette 2
         
         // permet de bouger la balle
         pos_balle.x += trajectoire.x
@@ -33,35 +41,60 @@ class PadelViewController: UIViewController {
         {
            trajectoire.x = -trajectoire.x
         }
-        if pos_balle.y < 0 // rebond sur le plafond
-        {
-           trajectoire.y = -trajectoire.y
-        }
         
-        // test le rebond donc non-perdu et la balle est elle en dessous de la raquette
-        // perdu permet de ne pas retester la balle si elle ne touche pas la raquette
-        if !perdu && (pos_balle.y + size_balle.height > pos_raquette.y) {  // est-ce que la balle est entrain de dépasser la raquettte en Y ?
-            // si oui on regarde si la balle est entre la raquette et on inverse la trajectoire de la balle
-            if (pos_balle.x + size_balle.width > pos_raquette.x) && (pos_balle.x < pos_raquette.x + size_raquette.width) {
-                trajectoire.y = -trajectoire.y
-            } else {
-                perdu = true // on a perdu la balle
+        // gestion tour des joueurs de jouer
+        if bas_ecran_enabled { // joueur du bas
+            // test le rebond donc non-perdu et la balle est elle en dessous de la raquette
+            // perdu permet de ne pas retester la balle si elle ne touche pas la raquette
+            if !perdu && (pos_balle.y + size_balle.height > pos_raquette.y) {  // est-ce que la balle est entrain de dépasser la raquettte en Y ?
+                // si oui on regarde si la balle est entre la raquette et on inverse la trajectoire de la balle
+                if (pos_balle.x + size_balle.width > pos_raquette.x) && (pos_balle.x < pos_raquette.x + size_raquette.width) {
+                    trajectoire.y = -trajectoire.y
+                    bas_ecran_enabled = false // au tour de l'autre de jouer
+                } else {
+                    perdu = true // on a perdu la balle
+                    score[0] += 1
+                }
+            }
+            
+        }
+        else { // joueur du haut
+            if !perdu && (pos_balle.y < pos_raquette2.y) {  // est-ce que la balle est entrain de dépasser la raquettte en Y ?
+                // si oui on regarde si la balle est entre la raquette et on inverse la trajectoire de la balle
+                if (pos_balle.x + size_balle.width > pos_raquette2.x) && (pos_balle.x < pos_raquette2.x + size_raquette2.width) {
+                    trajectoire.y = -trajectoire.y
+                    bas_ecran_enabled = true
+                } else {
+                    perdu = true // on a perdu la balle
+                    score[1] += 1
+                }
             }
         }
         
-        // si balle dépasse le bas de l'ecran
-        if (pos_balle.y > size_screen.height + 100) {
+        
+        // si balle dépasse le bas de l'ecran ou le haut de l'ecran
+        if (pos_balle.y > size_screen.height + 100) || (pos_balle.y < -100){
+            tableau_score.text = "Score \(score[0]) - \(score[1])"
             perdu = false
             balle.frame.origin = CGPoint(x: (size_screen.width / 2) , y: (size_screen.height / 2)) // on remet la balle au centre
         }
-        
     }
+    
     
     // permet de localiser le doigt sur l'ecran avec un click
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let doigt :UITouch = touches.randomElement()!
         let pos_doigt = doigt.location(in: self.view) // position du doigt sur l'ecran
-        raquette_J1.center.x = pos_doigt.x
+        
+        // qui joue ?
+        if bas_ecran_enabled {
+            raquette_J1.center.x = pos_doigt.x
+        }
+        else {
+            raquette_J2.center.x = pos_doigt.x
+          
+        }
+        
         
     }
     
@@ -69,8 +102,16 @@ class PadelViewController: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let doigt :UITouch = touches.randomElement()!
         let pos_doigt = doigt.location(in: self.view) // position du doigt sur l'ecran
-        raquette_J1.center.x = pos_doigt.x
+        
+        // qui joue ?
+        if bas_ecran_enabled {
+            raquette_J1.center.x = pos_doigt.x
+        }
+        else {
+            raquette_J2.center.x = pos_doigt.x
+        }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
