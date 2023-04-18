@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 
 class PadelViewController: UIViewController {
-    var trajectoire = CGPoint(x: 0.5, y: 3) // trajectoire balle horizentale et verticale
+    var trajectoire = CGPoint(x: 0.5, y: 2.5) // trajectoire balle horizentale et verticale
     var timer : Timer!
     var perdu : Bool = false
     var bas_ecran_enabled = true
@@ -58,6 +58,14 @@ class PadelViewController: UIViewController {
                     trajectoire.y = -trajectoire.y
                     bas_ecran_enabled = false // au tour de l'autre de jouer
                     tape_balle!.play()
+                    trajectoire.x = 0.5
+                    // changement trajectoire en x de la balle
+                    if pos_balle.x + size_balle.width < pos_raquette.x + 50 {
+                        trajectoire.x = -2
+                    }
+                    if pos_balle.x >  pos_raquette.x + size_raquette.width - 50 {
+                        trajectoire.x = +2
+                    }
                 } else {
                     perdu = true // on a perdu la balle
                     score[0] += 1
@@ -71,7 +79,16 @@ class PadelViewController: UIViewController {
                 if (pos_balle.x + size_balle.width > pos_raquette2.x) && (pos_balle.x < pos_raquette2.x + size_raquette2.width) {
                     trajectoire.y = -trajectoire.y
                     bas_ecran_enabled = true
-                    tape_balle!.play()
+                    tape_balle!.play() // son balle
+                    trajectoire.x = 0.5
+                    // changement trajectoire en x de la balle
+                    if  pos_balle.x + size_balle.width < pos_raquette2.x + 50 {
+                        trajectoire.x = -2
+                    }
+                    if pos_balle.x > pos_raquette2.x + size_raquette2.width - 50 {
+                        trajectoire.x = +2
+                    }
+                    
                 } else {
                     perdu = true // on a perdu la balle
                     score[1] += 1
