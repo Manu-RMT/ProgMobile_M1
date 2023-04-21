@@ -9,13 +9,14 @@ import UIKit
 import AVFoundation
 
 class PadelViewController: UIViewController {
-    var trajectoire = CGPoint(x: 0.5, y: 2.5) // trajectoire balle horizentale et verticale
+    var trajectoire = CGPoint(x: 0.5, y: 3) // trajectoire balle horizentale et verticale
     var timer : Timer!
     var perdu : Bool = false
     var bas_ecran_enabled = true
     var score : [Int] = [0,0]
-    var joueur : String = ""
     var tape_balle : AVAudioPlayer?
+    var joueur : String = ""
+    let ajout_vitesse : Int = 1
     
     @IBOutlet weak var balle: UIImageView!
     @IBOutlet weak var raquette_J1: UIImageView!
@@ -112,7 +113,7 @@ class PadelViewController: UIViewController {
             boutoRretourHome.isHidden = false
             balle.isHidden = true
             tableau_score.isHidden = true
-            joueur = "Victoire du joueur A : \(score[0]) - \(score[1])"
+            joueur = "Victoire du joueur Rouge : \(score[0]) - \(score[1])"
             
         }
         if score[1] == 10 {
@@ -121,7 +122,7 @@ class PadelViewController: UIViewController {
             boutoRretourHome.isHidden = false
             balle.isHidden = true
             tableau_score.isHidden = true
-            joueur = "Victoire du joueur B : \(score[1]) - \(score[0])"
+            joueur = "Victoire du joueur Bleu : \(score[1]) - \(score[0])"
             
         }
         
@@ -166,13 +167,10 @@ class PadelViewController: UIViewController {
         // Do any additional setup after loading the view.
         timer = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(lancement_game), userInfo: nil, repeats: true)
         
-        let path = Bundle.main.path(forResource: "bruit_balle_tennis", ofType:"mp3")!
-        let url_balle = URL(fileURLWithPath: path)
-        
-        do {
-            tape_balle = try AVAudioPlayer(contentsOf: url_balle)
-        } catch{
-            print("Erreur lancement bruit")
+        ajout_bruit("bruit_balle_tennis", "mp3", bruit: &tape_balle) // bruit des balles
+        // on arrete le bruit à la fin du jeu
+        if score[0] == 10 || score[1] == 10 {
+            tape_balle!.stop()
         }
     
     }
@@ -188,3 +186,4 @@ class PadelViewController: UIViewController {
     */
 
 }
+
