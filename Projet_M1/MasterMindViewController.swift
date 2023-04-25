@@ -99,7 +99,7 @@ class MasterMindViewController: UIViewController {
         
         // Dans le cas ou il  a trouvé la combinaision
         if bien_place == 4 && nb_essaie > 1 {
-            messageBot.text = "Bravo la combinaision était bien : \(random_combinaison)"
+            messageBot.text = "Bravo la combinaison était bien : \(random_combinaison)"
             desactivate_game(win: true)
             
         }
