@@ -153,7 +153,7 @@ class MasterMindViewController: UIViewController {
         img_loose.isHidden = true
         affichage_resultat.text = nil
         libelleNbSaisie.text = "Je tente"
-        nb_essaie = 11
+        nb_essaie = 10
         random_combinaison = Int.random(in: 1000...9999)
     }
     
