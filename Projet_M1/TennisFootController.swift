@@ -184,7 +184,7 @@ class TennisFootViewController: UIViewController {
     }
     
     
-    // code pas fini
+    // code pas fini : idée d'amélioration du code
 //    private func gestion_balle(joueur : String, _ pos_balle: CGPoint,_ pos_raquette: CGPoint, _ size_raquette: CGSize, _ size_balle: CGSize , _ trajectoire: inout CGPoint, _ bas_ecran_active: inout Bool,_ score: inout  [Int] , _ tape_balle: inout AVAudioPlayer! ) {
 //
 //        if joueur == "haut" {
