@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     }
 }
 
+// extension de la view IUViewController qui permet de lire les audios
 extension UIViewController {
     func ajout_bruit(_ path_file: String,_ extension_file: String , bruit: inout AVAudioPlayer!) {
         let path = Bundle.main.path(forResource: path_file, ofType: extension_file)!
