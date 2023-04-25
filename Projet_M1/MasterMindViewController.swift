@@ -51,8 +51,8 @@ class MasterMindViewController: UIViewController {
         // on met la combinaison dans un tableau
         let combinaison = String(random_combinaison).compactMap{ $0.wholeNumberValue }
         let combinaison_sasie = String(val).compactMap{ $0.wholeNumberValue }
-        var comb_saisie_copie = combinaison_sasie
-        var comb_secret_copie = combinaison
+        var comb_saisie_copie = combinaison_sasie // copie pour traitement
+        var comb_secret_copie = combinaison // copie pour traitement
         
         // type de chiffre
         var bien_place : Int! = 0
@@ -79,6 +79,7 @@ class MasterMindViewController: UIViewController {
             }
         }
         
+        // chiffre faux
         faux = 4 - (bien_place + mal_place)
         
         // affichage du resultat
