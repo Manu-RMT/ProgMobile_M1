@@ -13,10 +13,10 @@
 		320645D129DD5D0200D17098 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320645CF29DD5D0200D17098 /* Main.storyboard */; };
 		320645D329DD5D0300D17098 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 320645D229DD5D0300D17098 /* Assets.xcassets */; };
 		320645D629DD5D0300D17098 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320645D429DD5D0300D17098 /* LaunchScreen.storyboard */; };
-		3288E01129F2A89300B16F48 /* bruit_mastermind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3288E01029F2A89300B16F48 /* bruit_mastermind.mp3 */; };
-		329948B429EDD325002EEEB7 /* bruit_balle_tennis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 329948B329EDD325002EEEB7 /* bruit_balle_tennis.mp3 */; };
 		32A6051229E9494A0080244B /* MasterMindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051129E9494A0080244B /* MasterMindViewController.swift */; };
 		32A6051429E95C070080244B /* TennisFootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051329E95C070080244B /* TennisFootController.swift */; };
+		32AE816529F8616E00724895 /* bruit_mastermind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32AE816429F8616E00724895 /* bruit_mastermind.mp3 */; };
+		32AE816729F861AE00724895 /* bruit_balle_tennis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32AE816629F861AE00724895 /* bruit_balle_tennis.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +28,10 @@
 		320645D229DD5D0300D17098 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		320645D529DD5D0300D17098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		320645D729DD5D0300D17098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3288E01029F2A89300B16F48 /* bruit_mastermind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bruit_mastermind.mp3; path = ../../../Downloads/bruit_mastermind.mp3; sourceTree = "<group>"; };
-		329948B329EDD325002EEEB7 /* bruit_balle_tennis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bruit_balle_tennis.mp3; path = ../../../Downloads/bruit_balle_tennis.mp3; sourceTree = "<group>"; };
 		32A6051129E9494A0080244B /* MasterMindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMindViewController.swift; sourceTree = "<group>"; };
 		32A6051329E95C070080244B /* TennisFootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisFootController.swift; sourceTree = "<group>"; };
+		32AE816429F8616E00724895 /* bruit_mastermind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bruit_mastermind.mp3; sourceTree = "<group>"; };
+		32AE816629F861AE00724895 /* bruit_balle_tennis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bruit_balle_tennis.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +48,6 @@
 		320645BD29DD5D0200D17098 = {
 			isa = PBXGroup;
 			children = (
-				3288E01029F2A89300B16F48 /* bruit_mastermind.mp3 */,
-				329948B329EDD325002EEEB7 /* bruit_balle_tennis.mp3 */,
 				320645C829DD5D0200D17098 /* Projet_M1 */,
 				320645C729DD5D0200D17098 /* Products */,
 			);
@@ -66,6 +64,8 @@
 		320645C829DD5D0200D17098 /* Projet_M1 */ = {
 			isa = PBXGroup;
 			children = (
+				32AE816629F861AE00724895 /* bruit_balle_tennis.mp3 */,
+				32AE816429F8616E00724895 /* bruit_mastermind.mp3 */,
 				320645C929DD5D0200D17098 /* AppDelegate.swift */,
 				320645D229DD5D0300D17098 /* Assets.xcassets */,
 				320645D729DD5D0300D17098 /* Info.plist */,
@@ -137,10 +137,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AE816729F861AE00724895 /* bruit_balle_tennis.mp3 in Resources */,
 				320645D629DD5D0300D17098 /* LaunchScreen.storyboard in Resources */,
-				329948B429EDD325002EEEB7 /* bruit_balle_tennis.mp3 in Resources */,
 				320645D329DD5D0300D17098 /* Assets.xcassets in Resources */,
-				3288E01129F2A89300B16F48 /* bruit_mastermind.mp3 in Resources */,
+				32AE816529F8616E00724895 /* bruit_mastermind.mp3 in Resources */,
 				320645D129DD5D0200D17098 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

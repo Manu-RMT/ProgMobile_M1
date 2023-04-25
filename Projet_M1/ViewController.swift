@@ -24,6 +24,7 @@ class ViewController: UIViewController {
 extension UIViewController {
     func ajout_bruit(_ path_file: String,_ extension_file: String , bruit: inout AVAudioPlayer!) {
         let path = Bundle.main.path(forResource: path_file, ofType: extension_file)!
+        print(path)
         let url_balle = URL(fileURLWithPath: path)
         
         do {
