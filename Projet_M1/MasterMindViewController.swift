@@ -38,7 +38,7 @@ class MasterMindViewController: UIViewController {
         }
         
         // hors 1000 et 9999
-        if (1000 > val) || (val > 9999) {
+        if  val != 0 && ((val < 1000) || (val > 9999)){
             error_message = "La combinaison doit être de 4 chiffres, compris entre 1000 et 9999"
         }
         
