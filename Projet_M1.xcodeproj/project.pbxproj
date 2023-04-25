@@ -16,7 +16,7 @@
 		3288E01129F2A89300B16F48 /* bruit_mastermind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3288E01029F2A89300B16F48 /* bruit_mastermind.mp3 */; };
 		329948B429EDD325002EEEB7 /* bruit_balle_tennis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 329948B329EDD325002EEEB7 /* bruit_balle_tennis.mp3 */; };
 		32A6051229E9494A0080244B /* MasterMindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051129E9494A0080244B /* MasterMindViewController.swift */; };
-		32A6051429E95C070080244B /* PadelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051329E95C070080244B /* PadelViewController.swift */; };
+		32A6051429E95C070080244B /* TennisFootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051329E95C070080244B /* TennisFootController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		3288E01029F2A89300B16F48 /* bruit_mastermind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bruit_mastermind.mp3; path = ../../../Downloads/bruit_mastermind.mp3; sourceTree = "<group>"; };
 		329948B329EDD325002EEEB7 /* bruit_balle_tennis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bruit_balle_tennis.mp3; path = ../../../Downloads/bruit_balle_tennis.mp3; sourceTree = "<group>"; };
 		32A6051129E9494A0080244B /* MasterMindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMindViewController.swift; sourceTree = "<group>"; };
-		32A6051329E95C070080244B /* PadelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadelViewController.swift; sourceTree = "<group>"; };
+		32A6051329E95C070080244B /* TennisFootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisFootController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				320645D429DD5D0300D17098 /* LaunchScreen.storyboard */,
 				320645CF29DD5D0200D17098 /* Main.storyboard */,
 				32A6051129E9494A0080244B /* MasterMindViewController.swift */,
-				32A6051329E95C070080244B /* PadelViewController.swift */,
+				32A6051329E95C070080244B /* TennisFootController.swift */,
 				320645CB29DD5D0200D17098 /* SceneDelegate.swift */,
 				320645CD29DD5D0200D17098 /* ViewController.swift */,
 			);
@@ -156,7 +156,7 @@
 				320645CE29DD5D0200D17098 /* ViewController.swift in Sources */,
 				320645CA29DD5D0200D17098 /* AppDelegate.swift in Sources */,
 				320645CC29DD5D0200D17098 /* SceneDelegate.swift in Sources */,
-				32A6051429E95C070080244B /* PadelViewController.swift in Sources */,
+				32A6051429E95C070080244B /* TennisFootController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class PadelViewController: UIViewController {
+class TennisFootViewController: UIViewController {
     var trajectoire = CGPoint(x: 0.5, y: 3) // trajectoire balle horizentale et verticale
     var timer : Timer!
     var perdu : Bool = false
@@ -16,7 +16,6 @@ class PadelViewController: UIViewController {
     var score : [Int] = [0,0]
     var tape_balle : AVAudioPlayer?
     var joueur : String = ""
-    let ajout_vitesse : Int = 1
     
     @IBOutlet weak var balle: UIImageView!
     @IBOutlet weak var raquette_J1: UIImageView!
@@ -37,6 +36,7 @@ class PadelViewController: UIViewController {
         let size_raquette = raquette_J1.frame.size                 // taille de la raquette
         let pos_raquette2 : CGPoint  = raquette_J2.frame.origin     // position de la raquette 2
         let size_raquette2 = raquette_J2.frame.size                 // taille de la raquette 2
+        let ajout_vitesse : Double = Double.random(in: 4...7) // ajout vitesse aleatoire balle
         
         // permet de bouger la balle
         pos_balle.x += trajectoire.x
@@ -63,13 +63,19 @@ class PadelViewController: UIViewController {
                     // changement trajectoire en x de la balle
                     if pos_balle.x + size_balle.width < pos_raquette.x + 50 {
                         trajectoire.x = -2
+                        print(ajout_vitesse)
+                        trajectoire.y = -ajout_vitesse
                     }
                     if pos_balle.x >  pos_raquette.x + size_raquette.width - 50 {
                         trajectoire.x = +2
+                        print(ajout_vitesse)
+                        trajectoire.y =  -ajout_vitesse
+                        
                     }
                 } else {
                     perdu = true // on a perdu la balle
                     score[0] += 1
+                    trajectoire.y = 3
                 }
             }
             
@@ -85,14 +91,16 @@ class PadelViewController: UIViewController {
                     // changement trajectoire en x de la balle
                     if  pos_balle.x + size_balle.width < pos_raquette2.x + 50 {
                         trajectoire.x = -2
+                        trajectoire.y =  +ajout_vitesse
                     }
                     if pos_balle.x > pos_raquette2.x + size_raquette2.width - 50 {
                         trajectoire.x = +2
+                        trajectoire.y =  +ajout_vitesse
                     }
-                    
                 } else {
                     perdu = true // on a perdu la balle
                     score[1] += 1
+                    trajectoire.y = -3
                 }
             }
         }
@@ -174,6 +182,35 @@ class PadelViewController: UIViewController {
         }
     
     }
+    
+    
+    // code pas fini
+//    private func gestion_balle(joueur : String, _ pos_balle: CGPoint,_ pos_raquette: CGPoint, _ size_raquette: CGSize, _ size_balle: CGSize , _ trajectoire: inout CGPoint, _ bas_ecran_active: inout Bool,_ score: inout  [Int] , _ tape_balle: inout AVAudioPlayer! ) {
+//
+//        if joueur == "haut" {
+//            bas_ecran_active = true // au tour du joueur du bas de jouer
+//            score[1] += 1 // point pour le joueur du haut
+//        }else{
+//            bas_ecran_active = false // au tour du joueur du bas de jouer
+//            score[0] += 1 // point pour le joueur du haut
+//        }
+//
+//        if (pos_balle.x + size_balle.width > pos_raquette.x) && (pos_balle.x < pos_raquette.x + size_raquette.width) {
+//            trajectoire.y = -trajectoire.y
+//            tape_balle!.play()
+//            trajectoire.x = 0.5
+//            // changement trajectoire en x de la balle
+//            if pos_balle.x + size_balle.width < pos_raquette.x + 50 {
+//                trajectoire.x = -2
+//            }
+//            if pos_balle.x >  pos_raquette.x + size_raquette.width - 50 {
+//                trajectoire.x = +2
+//            }
+//        } else {
+//            perdu = true // on a perdu la balle
+//        }
+//    }
+    
 
     /*
     // MARK: - Navigation
