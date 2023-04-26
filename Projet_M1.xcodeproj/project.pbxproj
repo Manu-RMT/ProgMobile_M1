@@ -17,6 +17,7 @@
 		32A6051429E95C070080244B /* TennisFootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6051329E95C070080244B /* TennisFootController.swift */; };
 		32AE816529F8616E00724895 /* bruit_mastermind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32AE816429F8616E00724895 /* bruit_mastermind.mp3 */; };
 		32AE816729F861AE00724895 /* bruit_balle_tennis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32AE816629F861AE00724895 /* bruit_balle_tennis.mp3 */; };
+		32AE816929F9445400724895 /* ProgMobile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 32AE816829F9445400724895 /* ProgMobile.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		32A6051329E95C070080244B /* TennisFootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisFootController.swift; sourceTree = "<group>"; };
 		32AE816429F8616E00724895 /* bruit_mastermind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bruit_mastermind.mp3; sourceTree = "<group>"; };
 		32AE816629F861AE00724895 /* bruit_balle_tennis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bruit_balle_tennis.mp3; sourceTree = "<group>"; };
+		32AE816829F9445400724895 /* ProgMobile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = ProgMobile.pdf; path = ../../../Downloads/ProgMobile.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		320645BD29DD5D0200D17098 = {
 			isa = PBXGroup;
 			children = (
+				32AE816829F9445400724895 /* ProgMobile.pdf */,
 				320645C829DD5D0200D17098 /* Projet_M1 */,
 				320645C729DD5D0200D17098 /* Products */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				32AE816729F861AE00724895 /* bruit_balle_tennis.mp3 in Resources */,
 				320645D629DD5D0300D17098 /* LaunchScreen.storyboard in Resources */,
+				32AE816929F9445400724895 /* ProgMobile.pdf in Resources */,
 				320645D329DD5D0300D17098 /* Assets.xcassets in Resources */,
 				32AE816529F8616E00724895 /* bruit_mastermind.mp3 in Resources */,
 				320645D129DD5D0200D17098 /* Main.storyboard in Resources */,
